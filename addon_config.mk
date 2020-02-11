@@ -15,11 +15,11 @@
 # and the PG will write to the console the kind of error and in which line it is
 
 meta:
-	ADDON_NAME = ofxAddonTemplate
-	ADDON_DESCRIPTION = ofxAddonTemplate is amazing!
-	ADDON_AUTHOR = @yournamehere
-	ADDON_TAGS = "addon" "template"
-	ADDON_URL = http://github.com/yournamehere/ofxAddonTemplate
+	ADDON_NAME = ofxIcon
+	ADDON_DESCRIPTION = ofxIcon is icon generator
+	ADDON_AUTHOR = @desktopgame
+	ADDON_TAGS = "addon"
+	ADDON_URL = http://github.com/desktopgame/ofxIcon
 
 common:
 	# dependencies with other addons, a list of them separated by spaces 
