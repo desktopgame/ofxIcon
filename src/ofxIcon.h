@@ -4,6 +4,13 @@
 #include <ofPixels.h>
 
 namespace ofxIcon {
+namespace util {
+/**
+ * @param pixels
+ * @param color
+ */
+void fillColor(ofPixels& pixels, ofColor color);
+}
 
 /**
  * ButtonStyle.

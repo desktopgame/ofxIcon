@@ -2,6 +2,15 @@
 #include <iostream>
 
 namespace ofxIcon {
+namespace util {
+void fillColor(ofPixels & pixels, ofColor color) {
+	for (int x = 0; x < pixels.getWidth(); x++) {
+		for (int y = 0; y < pixels.getHeight(); y++) {
+			pixels.setColor(x, y, color);
+		}
+	}
+}
+}
 //
 // Button
 //
@@ -107,11 +116,7 @@ InputFieldStyle & InputFieldStyle::borderLightColor(ofColor _borderLightColor) {
 	return *this;
 }
 void writeInputFieldImage(ofPixels & pixels, InputFieldStyle style) {
-	for (int x = 0; x < pixels.getWidth(); x++) {
-		for (int y = 0; y < pixels.getHeight(); y++) {
-			pixels.setColor(x, y, style._fillColor);
-		}
-	}
+	util::fillColor(pixels, style._fillColor);
 	for (int x = 0; x < pixels.getWidth(); x++) {
 		for (int y = 0; y < style._edgeSize; y++) {
 			pixels.setColor(x, y, style._borderShadowColor);
@@ -196,11 +201,7 @@ DropdownStyle & DropdownStyle::triangleColor(ofColor _triangleColor) {
 }
 
 void writeDropdownImage(ofPixels & pixels, DropdownStyle style) {
-	for (int x = 0; x < pixels.getWidth(); x++) {
-		for (int y = 0; y < pixels.getHeight(); y++) {
-			pixels.setColor(x, y, style._fillColor);
-		}
-	}
+	util::fillColor(pixels, style._fillColor);
 	int baseline = static_cast<int>(static_cast<float>(pixels.getHeight()) * 0.4f);
 	int slotSizeX = pixels.getWidth() / 6;
 	int slotSizeY = pixels.getHeight();
