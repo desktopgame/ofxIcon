@@ -10,6 +10,13 @@ namespace util {
  * @param color
  */
 void fillColor(ofPixels& pixels, ofColor color);
+
+/**
+ * @param pixels
+ * @param color
+ * @param edgeSize
+ */
+void drawBorder(ofPixels& pixels, ofColor color, int edgeSize);
 }
 
 /**

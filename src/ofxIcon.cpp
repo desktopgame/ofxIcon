@@ -10,6 +10,28 @@ void fillColor(ofPixels & pixels, ofColor color) {
 		}
 	}
 }
+void drawBorder(ofPixels & pixels, ofColor color, int edgeSize) {
+	for (int x = 0; x < pixels.getWidth(); x++) {
+		for (int y = 0; y < edgeSize; y++) {
+			pixels.setColor(x, y, color);
+		}
+	}
+	for (int y = 0; y < pixels.getHeight(); y++) {
+		for (int x = pixels.getWidth() - edgeSize; x < pixels.getWidth(); x++) {
+			pixels.setColor(x, y, color);
+		}
+	}
+	for (int x = 0; x < edgeSize; x++) {
+		for (int y = 0; y < pixels.getHeight(); y++) {
+			pixels.setColor(x, y, color);
+		}
+	}
+	for (int x = 0; x < pixels.getWidth(); x++) {
+		for (int y = pixels.getHeight() - edgeSize; y < pixels.getHeight(); y++) {
+			pixels.setColor(x, y, color);
+		}
+	}
+}
 }
 //
 // Button
@@ -69,26 +91,7 @@ void writeButtonImage(ofPixels & pixels, ButtonStyle style) {
 			}
 		}
 	}
-	for (int x = 0; x < pixels.getWidth(); x++) {
-		for (int y = 0; y < style._edgeSize; y++) {
-			pixels.setColor(x, y, style._borderColor);
-		}
-	}
-	for (int y = 0; y < pixels.getHeight(); y++) {
-		for (int x = pixels.getWidth() - style._edgeSize; x < pixels.getWidth(); x++) {
-			pixels.setColor(x, y, style._borderColor);
-		}
-	}
-	for (int x = 0; x < style._edgeSize; x++) {
-		for (int y = 0; y < pixels.getHeight(); y++) {
-			pixels.setColor(x, y, style._borderColor);
-		}
-	}
-	for (int x = 0; x < pixels.getWidth(); x++) {
-		for (int y = pixels.getHeight() - style._edgeSize; y < pixels.getHeight(); y++) {
-			pixels.setColor(x, y, style._borderColor);
-		}
-	}
+	util::drawBorder(pixels, style._borderColor, style._edgeSize);
 }
 //
 // InputField
@@ -238,29 +241,9 @@ void writeDropdownImage(ofPixels & pixels, DropdownStyle style) {
 			pixels.setColor(marginTriaW + x, y, style._triangleColor);
 		}
 	}
-
+	util::drawBorder(pixels, style._borderColor, style._edgeSize);
 	for (int x = slotPosX; x < slotPosX + style._edgeSize; x++) {
 		for (int y = 0; y < pixels.getHeight(); y++) {
-			pixels.setColor(x, y, style._borderColor);
-		}
-	}
-	for (int x = 0; x < pixels.getWidth(); x++) {
-		for (int y = 0; y < style._edgeSize; y++) {
-			pixels.setColor(x, y, style._borderColor);
-		}
-	}
-	for (int y = 0; y < pixels.getHeight(); y++) {
-		for (int x = pixels.getWidth() - style._edgeSize; x < pixels.getWidth(); x++) {
-			pixels.setColor(x, y, style._borderColor);
-		}
-	}
-	for (int x = 0; x < style._edgeSize; x++) {
-		for (int y = 0; y < pixels.getHeight(); y++) {
-			pixels.setColor(x, y, style._borderColor);
-		}
-	}
-	for (int x = 0; x < pixels.getWidth(); x++) {
-		for (int y = pixels.getHeight() - style._edgeSize; y < pixels.getHeight(); y++) {
 			pixels.setColor(x, y, style._borderColor);
 		}
 	}
