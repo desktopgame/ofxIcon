@@ -53,5 +53,34 @@ struct InputFieldStyle {
  * @param style
  */
 void writeInputFieldImage(ofPixels& pixels, InputFieldStyle style);
+
+/**
+ * DropdownStyle.
+ */
+struct DropdownStyle {
+	explicit DropdownStyle();
+
+	DropdownStyle& edgeSize(int _edgeSize);
+	DropdownStyle& fillColor(ofColor _fillColor);
+	DropdownStyle& borderColor(ofColor _borderColor);
+	DropdownStyle& fillSlotColor0(ofColor _fillSlotColor0);
+	DropdownStyle& fillSlotColor1(ofColor _fillSlotColor1);
+	DropdownStyle& fillSlotColor2(ofColor _fillSlotColor2);
+	DropdownStyle& triangleColor(ofColor _triangleColor);
+
+	int _edgeSize;
+	ofColor _fillColor;
+	ofColor _borderColor;
+	ofColor _fillSlotColor0;
+	ofColor _fillSlotColor1;
+	ofColor _fillSlotColor2;
+	ofColor _triangleColor;
+};
+
+/**
+ * @param pixels
+ * @param style
+ */
+void writeDropdownImage(ofPixels& pixels, DropdownStyle style);
 }
 #endif
