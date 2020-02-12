@@ -251,10 +251,29 @@ DropdownStyle DropdownStyle::triangleColor(ofColor _triangleColor) {
 	return c;
 }
 
+DropdownStyle DropdownStyle::minSlotWidth(int _minSlotWidth) {
+	auto c = *this;
+	c._minSlotWidth = _minSlotWidth;
+	return c;
+}
+
+DropdownStyle DropdownStyle::maxSlotWidth(int _maxSlotWidth) {
+	auto c = *this;
+	c._maxSlotWidth = _maxSlotWidth;
+	return c;
+}
+
+int DropdownStyle::computeSlotWidth(int width) const {
+	int s = width / 6;
+	s = std::min(s, _maxSlotWidth);
+	s = std::max(s, _minSlotWidth);
+	return s;
+}
+
 void writeDropdownImage(ofPixels & pixels, DropdownStyle style) {
 	util::fillColor(pixels, style._fillColor);
 	int baseline = static_cast<int>(static_cast<float>(pixels.getHeight()) * 0.4f);
-	int slotSizeX = pixels.getWidth() / 6;
+	int slotSizeX = style.computeSlotWidth(pixels.getWidth());
 	int slotSizeY = pixels.getHeight();
 	int slotPosX = pixels.getWidth() - slotSizeX;
 	int slotPosY = 0;

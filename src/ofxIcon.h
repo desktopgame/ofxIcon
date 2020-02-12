@@ -90,8 +90,13 @@ struct DropdownStyle {
 	DropdownStyle fillSlotColor1(ofColor _fillSlotColor1);
 	DropdownStyle fillSlotColor2(ofColor _fillSlotColor2);
 	DropdownStyle triangleColor(ofColor _triangleColor);
+	DropdownStyle minSlotWidth(int _minSlotWidth);
+	DropdownStyle maxSlotWidth(int _maxSlotWidth);
+	int computeSlotWidth(int width) const;
 
 	int _edgeSize;
+	int _minSlotWidth;
+	int _maxSlotWidth;
 	ofColor _fillColor;
 	ofColor _borderColor;
 	ofColor _fillSlotColor0;
