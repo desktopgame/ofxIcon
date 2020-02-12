@@ -207,6 +207,8 @@ void writeInputFieldImage(ofPixels & pixels, InputFieldStyle style) {
 //
 DropdownStyle::DropdownStyle() 
  :  _edgeSize(2),
+	_minSlotWidth(0),
+	_maxSlotWidth(50),
     _fillColor(ofColor::white),
     _borderColor(ofColor::black),
     _fillSlotColor0(ofColor::cyan),
