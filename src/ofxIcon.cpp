@@ -32,6 +32,36 @@ void drawBorder(ofPixels & pixels, ofColor color, int edgeSize) {
 		}
 	}
 }
+void drawLine(ofPixels & pixels, ofColor color, glm::ivec2 start, glm::ivec2 end) {
+	int dx = std::abs(end.x - start.x);
+	int dy = std::abs(end.y - start.y);
+	int sx, sy = 0;
+	if (start.x < end.x)
+		sx = 1;
+	else
+		sx = -1;
+	if (start.y < end.y)
+		sy = 1;
+	else
+		sy = -1;
+	int err = dx - dy;
+	int e2 = 0;
+	while (true) {
+		pixels.setColor(start.x, start.y, color);
+		if (start.x == end.x && start.y == end.y) {
+			break;
+		}
+		e2 = 2 * err;
+		if (e2 > -dy) {
+			err = err - dy;
+			start.x = start.x + sx;
+		}
+		if (e2 < dx) {
+			err = err + dx;
+			start.y = start.y + sy;
+		}
+	}
+}
 }
 //
 // Button
@@ -39,7 +69,7 @@ void drawBorder(ofPixels & pixels, ofColor color, int edgeSize) {
 ButtonStyle::ButtonStyle()
 	: _edgeSize(2),
 	  _press(false),
-      _borderColor(ofColor::blue),
+      _borderColor(ofColor::black),
 	  _fillColor0(ofColor::cyan),
 	  _fillColor1(ofColor::white),
 	  _fillColor2(ofColor::cyan) {
@@ -246,6 +276,65 @@ void writeDropdownImage(ofPixels & pixels, DropdownStyle style) {
 		for (int y = 0; y < pixels.getHeight(); y++) {
 			pixels.setColor(x, y, style._borderColor);
 		}
+	}
+}
+//
+// CheckBox
+//
+CheckBoxStyle::CheckBoxStyle() 
+ : _edgeSize(2),
+   _selected(false),
+   _lineColor(ofColor::black),
+	_borderColor(ofColor::black),
+	_fillColor0(ofColor::cyan),
+	_fillColor1(ofColor::white),
+	_fillColor2(ofColor::cyan) {
+}
+CheckBoxStyle & CheckBoxStyle::edgeSize(int _edgeSize) {
+	this->_edgeSize = _edgeSize;
+	return *this;
+}
+CheckBoxStyle & CheckBoxStyle::selected(bool _selected) {
+	this->_selected = _selected;
+	return *this;
+}
+CheckBoxStyle & CheckBoxStyle::lineColor(ofColor _lineColor) {
+	this->_lineColor = _lineColor;
+	return *this;
+}
+CheckBoxStyle & CheckBoxStyle::fillColor0(ofColor _fillColor0) {
+	this->_fillColor0 = _fillColor0;
+	return *this;
+}
+CheckBoxStyle & CheckBoxStyle::fillColor1(ofColor _fillColor1) {
+	this->_fillColor1 = _fillColor1;
+	return *this;
+}
+CheckBoxStyle & CheckBoxStyle::fillColor2(ofColor _fillColor2) {
+	this->_fillColor2 = _fillColor2;
+	return *this;
+}
+void writeCheckBoxImage(ofPixels & pixels, CheckBoxStyle style) {
+	writeButtonImage(pixels, ofxIcon::ButtonStyle()
+		.edgeSize(style._edgeSize)
+		.borderColor(style._borderColor)
+		.fillColor0(style._fillColor0)
+		.fillColor1(style._fillColor1)
+		.fillColor2(style._fillColor2));
+	if (style._selected) {
+		glm::ivec2 p0(
+			(pixels.getWidth() / 2) - pixels.getWidth() / 4,pixels.getHeight() / 2
+		);
+		glm::ivec2 p1(
+			(pixels.getWidth() / 2) - pixels.getWidth() / 4, (pixels.getHeight() / 2) + pixels.getHeight() / 4
+		);
+		glm::ivec2 p2(
+			(pixels.getWidth() / 2) + pixels.getWidth() / 4, (pixels.getHeight() / 2) - pixels.getHeight() / 4
+		);
+		util::drawLine(pixels, style._lineColor, p0, p1);
+		util::drawLine(pixels, style._lineColor, p0 + glm::ivec2(1,0), p1 + glm::ivec2(1, 0));
+		util::drawLine(pixels, style._lineColor, p1, p2);
+		util::drawLine(pixels, style._lineColor, p1 + glm::ivec2(1, 0), p2 + glm::ivec2(1, 0));
 	}
 }
 }
