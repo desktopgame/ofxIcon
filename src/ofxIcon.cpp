@@ -414,6 +414,7 @@ void writeRadioButtonImage(ofPixels & pixels, RadioButtonStyle style) {
 	int centerX = radiusX;
 	int centerY = radiusY;
 	int baseline = static_cast<int>(static_cast<float>(pixels.getHeight()) * 0.4f);
+	util::fillColor(pixels, ofColor(0, 0, 0, 0));
 	for (int i = 0; i < 360; i++) {
 		float f = static_cast<float>(i);
 		f = f * (3.14f / 180.0f);
