@@ -75,29 +75,35 @@ ButtonStyle::ButtonStyle()
 	  _fillColor1(ofColor::white),
 	  _fillColor2(ofColor::cyan) {
 }
-ButtonStyle & ButtonStyle::edgeSize(int _edgeSize) {
-	this->_edgeSize = _edgeSize;
-	return *this;
+ButtonStyle ButtonStyle::edgeSize(int _edgeSize) {
+	auto c = *this;
+	c._edgeSize = _edgeSize;
+	return c;
 }
-ButtonStyle & ButtonStyle::press(bool _press) {
-	this->_press = _press;
-	return *this;
+ButtonStyle ButtonStyle::press(bool _press) {
+	auto c = *this;
+	c._press = _press;
+	return c;
 }
-ButtonStyle & ButtonStyle::borderColor(ofColor _borderColor) {
-	this->_borderColor = _borderColor;
-	return *this;
+ButtonStyle ButtonStyle::borderColor(ofColor _borderColor) {
+	auto c = *this;
+	c._borderColor = _borderColor;
+	return c;
 }
-ButtonStyle & ButtonStyle::fillColor0(ofColor _fillColor0) {
-	this->_fillColor0 = _fillColor0;
-	return *this;
+ButtonStyle ButtonStyle::fillColor0(ofColor _fillColor0) {
+	auto c = *this;
+	c._fillColor0 = _fillColor0;
+	return c;
 }
-ButtonStyle & ButtonStyle::fillColor1(ofColor _fillColor1) {
-	this->_fillColor1 = _fillColor1;
-	return *this;
+ButtonStyle ButtonStyle::fillColor1(ofColor _fillColor1) {
+	auto c = *this;
+	c._fillColor1 = _fillColor1;
+	return c;
 }
-ButtonStyle & ButtonStyle::fillColor2(ofColor _fillColor2) {
-	this->_fillColor2 = _fillColor2;
-	return *this;
+ButtonStyle ButtonStyle::fillColor2(ofColor _fillColor2) {
+	auto c = *this;
+	c._fillColor2 = _fillColor2;
+	return c;
 }
 void writeButtonImage(ofPixels & pixels, ButtonStyle style) {
 	if (style._press) {
@@ -133,21 +139,25 @@ InputFieldStyle::InputFieldStyle()
    _borderShadowColor(ofColor::black),
    _borderLightColor(ofColor::white) {
 }
-InputFieldStyle & InputFieldStyle::edgeSize(int _edgeSize) {
-	this->_edgeSize = _edgeSize;
-	return *this;
+InputFieldStyle InputFieldStyle::edgeSize(int _edgeSize) {
+	auto c = *this;
+	c._edgeSize = _edgeSize;
+	return c;
 }
-InputFieldStyle & InputFieldStyle::fillColor(ofColor _fillColor) {
-	this->_fillColor = _fillColor;
-	return *this;
+InputFieldStyle InputFieldStyle::fillColor(ofColor _fillColor) {
+	auto c = *this;
+	c._fillColor = _fillColor;
+	return c;
 }
-InputFieldStyle & InputFieldStyle::borderShadowColor(ofColor _borderShadowColor) {
-	this->_borderShadowColor = _borderShadowColor;
-	return *this;
+InputFieldStyle InputFieldStyle::borderShadowColor(ofColor _borderShadowColor) {
+	auto c = *this;
+	c._borderShadowColor = _borderShadowColor;
+	return c;
 }
-InputFieldStyle & InputFieldStyle::borderLightColor(ofColor _borderLightColor) {
-	this->_borderLightColor = _borderLightColor;
-	return *this;
+InputFieldStyle InputFieldStyle::borderLightColor(ofColor _borderLightColor) {
+	auto c = *this;
+	c._borderLightColor = _borderLightColor;
+	return c;
 }
 void writeInputFieldImage(ofPixels & pixels, InputFieldStyle style) {
 	util::fillColor(pixels, style._fillColor);
@@ -204,34 +214,41 @@ DropdownStyle::DropdownStyle()
     _fillSlotColor2(ofColor::cyan),
 	_triangleColor(ofColor::black) {
 }
-DropdownStyle & DropdownStyle::edgeSize(int _edgeSize) {
-	this->_edgeSize = _edgeSize;
-	return *this;
+DropdownStyle DropdownStyle::edgeSize(int _edgeSize) {
+	auto c = *this;
+	c._edgeSize = _edgeSize;
+	return c;
 }
-DropdownStyle & DropdownStyle::fillColor(ofColor _fillColor) {
-	this->_fillColor = _fillColor;
-	return *this;
+DropdownStyle DropdownStyle::fillColor(ofColor _fillColor) {
+	auto c = *this;
+	c._fillColor = _fillColor;
+	return c;
 }
-DropdownStyle & DropdownStyle::borderColor(ofColor _borderColor) {
-	this->_borderColor = _borderColor;
-	return *this;
+DropdownStyle DropdownStyle::borderColor(ofColor _borderColor) {
+	auto c = *this;
+	c._borderColor = _borderColor;
+	return c;
 }
-DropdownStyle & DropdownStyle::fillSlotColor0(ofColor _fillSlotColor0) {
-	this->_fillSlotColor0 = _fillSlotColor0;
-	return *this;
+DropdownStyle DropdownStyle::fillSlotColor0(ofColor _fillSlotColor0) {
+	auto c = *this;
+	c._fillSlotColor0 = _fillSlotColor0;
+	return c;
 }
-DropdownStyle & DropdownStyle::fillSlotColor1(ofColor _fillSlotColor1) {
-	this->_fillSlotColor1 = _fillSlotColor1;
-	return *this;
+DropdownStyle DropdownStyle::fillSlotColor1(ofColor _fillSlotColor1) {
+	auto c = *this;
+	c._fillSlotColor1 = _fillSlotColor1;
+	return c;
 }
-DropdownStyle & DropdownStyle::fillSlotColor2(ofColor _fillSlotColor2) {
-	this->_fillSlotColor2 = _fillSlotColor2;
-	return *this;
+DropdownStyle DropdownStyle::fillSlotColor2(ofColor _fillSlotColor2) {
+	auto c = *this;
+	c._fillSlotColor2 = _fillSlotColor2;
+	return c;
 }
 
-DropdownStyle & DropdownStyle::triangleColor(ofColor _triangleColor) {
-	this->_triangleColor = _triangleColor;
-	return *this;
+DropdownStyle DropdownStyle::triangleColor(ofColor _triangleColor) {
+	auto c = *this;
+	c._triangleColor = _triangleColor;
+	return c;
 }
 
 void writeDropdownImage(ofPixels & pixels, DropdownStyle style) {
@@ -291,29 +308,35 @@ CheckBoxStyle::CheckBoxStyle()
 	_fillColor1(ofColor::white),
 	_fillColor2(ofColor::cyan) {
 }
-CheckBoxStyle & CheckBoxStyle::edgeSize(int _edgeSize) {
-	this->_edgeSize = _edgeSize;
-	return *this;
+CheckBoxStyle CheckBoxStyle::edgeSize(int _edgeSize) {
+	auto c = *this;
+	c._edgeSize = _edgeSize;
+	return c;
 }
-CheckBoxStyle & CheckBoxStyle::selected(bool _selected) {
-	this->_selected = _selected;
-	return *this;
+CheckBoxStyle CheckBoxStyle::selected(bool _selected) {
+	auto c = *this;
+	c._selected = _selected;
+	return c;
 }
-CheckBoxStyle & CheckBoxStyle::lineColor(ofColor _lineColor) {
-	this->_lineColor = _lineColor;
-	return *this;
+CheckBoxStyle CheckBoxStyle::lineColor(ofColor _lineColor) {
+	auto c = *this;
+	c._lineColor = _lineColor;
+	return c;
 }
-CheckBoxStyle & CheckBoxStyle::fillColor0(ofColor _fillColor0) {
-	this->_fillColor0 = _fillColor0;
-	return *this;
+CheckBoxStyle CheckBoxStyle::fillColor0(ofColor _fillColor0) {
+	auto c = *this;
+	c._fillColor0 = _fillColor0;
+	return c;
 }
-CheckBoxStyle & CheckBoxStyle::fillColor1(ofColor _fillColor1) {
-	this->_fillColor1 = _fillColor1;
-	return *this;
+CheckBoxStyle CheckBoxStyle::fillColor1(ofColor _fillColor1) {
+	auto c = *this;
+	c._fillColor1 = _fillColor1;
+	return c;
 }
-CheckBoxStyle & CheckBoxStyle::fillColor2(ofColor _fillColor2) {
-	this->_fillColor2 = _fillColor2;
-	return *this;
+CheckBoxStyle CheckBoxStyle::fillColor2(ofColor _fillColor2) {
+	auto c = *this;
+	c._fillColor2 = _fillColor2;
+	return c;
 }
 void writeCheckBoxImage(ofPixels & pixels, CheckBoxStyle style) {
 	writeButtonImage(pixels, ofxIcon::ButtonStyle()
@@ -350,33 +373,40 @@ RadioButtonStyle::RadioButtonStyle()
     _fillColor1(ofColor::white),
     _fillColor2(ofColor::cyan) {
 }
-RadioButtonStyle & RadioButtonStyle::edgeSize(int _edgeSize) {
-	this->_edgeSize = _edgeSize;
-	return *this;
+RadioButtonStyle RadioButtonStyle::edgeSize(int _edgeSize) {
+	auto c = *this;
+	c._edgeSize = _edgeSize;
+	return c;
 }
-RadioButtonStyle & RadioButtonStyle::selected(bool _selected) {
-	this->_selected = _selected;
-	return *this;
+RadioButtonStyle RadioButtonStyle::selected(bool _selected) {
+	auto c = *this;
+	c._selected = _selected;
+	return c;
 }
-RadioButtonStyle & RadioButtonStyle::checkColor(ofColor _checkColor) {
-	this->_checkColor = _checkColor;
-	return *this;
+RadioButtonStyle RadioButtonStyle::checkColor(ofColor _checkColor) {
+	auto c = *this;
+	c._checkColor = _checkColor;
+	return c;
 }
-RadioButtonStyle & RadioButtonStyle::borderColor(ofColor _borderColor) {
-	this->_borderColor = _borderColor;
-	return *this;
+RadioButtonStyle RadioButtonStyle::borderColor(ofColor _borderColor) {
+	auto c = *this;
+	c._borderColor = _borderColor;
+	return c;
 }
-RadioButtonStyle & RadioButtonStyle::fillColor0(ofColor _fillColor0) {
-	this->_fillColor0 = _fillColor0;
-	return *this;
+RadioButtonStyle RadioButtonStyle::fillColor0(ofColor _fillColor0) {
+	auto c = *this;
+	c._fillColor0 = _fillColor0;
+	return c;
 }
-RadioButtonStyle & RadioButtonStyle::fillColor1(ofColor _fillColor1) {
-	this->_fillColor1 = _fillColor1;
-	return *this;
+RadioButtonStyle RadioButtonStyle::fillColor1(ofColor _fillColor1) {
+	auto c = *this;
+	c._fillColor1 = _fillColor1;
+	return c;
 }
-RadioButtonStyle & RadioButtonStyle::fillColor2(ofColor _fillColor2) {
-	this->_fillColor2 = _fillColor2;
-	return *this;
+RadioButtonStyle RadioButtonStyle::fillColor2(ofColor _fillColor2) {
+	auto c = *this;
+	c._fillColor2 = _fillColor2;
+	return c;
 }
 void writeRadioButtonImage(ofPixels & pixels, RadioButtonStyle style) {
 	int radiusX = pixels.getWidth() / 2;

@@ -34,12 +34,12 @@ void drawLine(ofPixels& pixels, ofColor color, glm::ivec2 start, glm::ivec2 end)
 struct ButtonStyle {
 	explicit ButtonStyle();
 
-	ButtonStyle& edgeSize(int _edgeSize);
-	ButtonStyle& press(bool _press);
-	ButtonStyle& borderColor(ofColor _borderColor);
-	ButtonStyle& fillColor0(ofColor _fillColor0);
-	ButtonStyle& fillColor1(ofColor _fillColor1);
-	ButtonStyle& fillColor2(ofColor _fillColor2);
+	ButtonStyle edgeSize(int _edgeSize);
+	ButtonStyle press(bool _press);
+	ButtonStyle borderColor(ofColor _borderColor);
+	ButtonStyle fillColor0(ofColor _fillColor0);
+	ButtonStyle fillColor1(ofColor _fillColor1);
+	ButtonStyle fillColor2(ofColor _fillColor2);
 
 	int _edgeSize;
 	bool _press;
@@ -60,10 +60,10 @@ void writeButtonImage(ofPixels& pixels, ButtonStyle style);
 struct InputFieldStyle {
 	explicit InputFieldStyle();
 
-	InputFieldStyle& edgeSize(int _edgeSize);
-	InputFieldStyle& fillColor(ofColor _fillColor);
-	InputFieldStyle& borderShadowColor(ofColor _borderShadowColor);
-	InputFieldStyle& borderLightColor(ofColor _borderLightColor);
+	InputFieldStyle edgeSize(int _edgeSize);
+	InputFieldStyle fillColor(ofColor _fillColor);
+	InputFieldStyle borderShadowColor(ofColor _borderShadowColor);
+	InputFieldStyle borderLightColor(ofColor _borderLightColor);
 
 	int _edgeSize;
 	ofColor _fillColor;	
@@ -83,13 +83,13 @@ void writeInputFieldImage(ofPixels& pixels, InputFieldStyle style);
 struct DropdownStyle {
 	explicit DropdownStyle();
 
-	DropdownStyle& edgeSize(int _edgeSize);
-	DropdownStyle& fillColor(ofColor _fillColor);
-	DropdownStyle& borderColor(ofColor _borderColor);
-	DropdownStyle& fillSlotColor0(ofColor _fillSlotColor0);
-	DropdownStyle& fillSlotColor1(ofColor _fillSlotColor1);
-	DropdownStyle& fillSlotColor2(ofColor _fillSlotColor2);
-	DropdownStyle& triangleColor(ofColor _triangleColor);
+	DropdownStyle edgeSize(int _edgeSize);
+	DropdownStyle fillColor(ofColor _fillColor);
+	DropdownStyle borderColor(ofColor _borderColor);
+	DropdownStyle fillSlotColor0(ofColor _fillSlotColor0);
+	DropdownStyle fillSlotColor1(ofColor _fillSlotColor1);
+	DropdownStyle fillSlotColor2(ofColor _fillSlotColor2);
+	DropdownStyle triangleColor(ofColor _triangleColor);
 
 	int _edgeSize;
 	ofColor _fillColor;
@@ -112,12 +112,12 @@ void writeDropdownImage(ofPixels& pixels, DropdownStyle style);
 struct CheckBoxStyle {
 	explicit CheckBoxStyle();
 
-	CheckBoxStyle& edgeSize(int _edgeSize);
-	CheckBoxStyle& selected(bool _selected);
-	CheckBoxStyle& lineColor(ofColor _lineColor);
-	CheckBoxStyle& fillColor0(ofColor _fillColor0);
-	CheckBoxStyle& fillColor1(ofColor _fillColor1);
-	CheckBoxStyle& fillColor2(ofColor _fillColor2);
+	CheckBoxStyle edgeSize(int _edgeSize);
+	CheckBoxStyle selected(bool _selected);
+	CheckBoxStyle lineColor(ofColor _lineColor);
+	CheckBoxStyle fillColor0(ofColor _fillColor0);
+	CheckBoxStyle fillColor1(ofColor _fillColor1);
+	CheckBoxStyle fillColor2(ofColor _fillColor2);
 
 	int _edgeSize;
 	bool _selected;
@@ -141,13 +141,13 @@ void writeCheckBoxImage(ofPixels& pixels, CheckBoxStyle style);
 struct RadioButtonStyle {
 	explicit RadioButtonStyle();
 
-	RadioButtonStyle& edgeSize(int _edgeSize);
-	RadioButtonStyle& selected(bool _selected);
-	RadioButtonStyle& checkColor(ofColor _checkColor);
-	RadioButtonStyle& borderColor(ofColor _borderColor);
-	RadioButtonStyle& fillColor0(ofColor _fillColor0);
-	RadioButtonStyle& fillColor1(ofColor _fillColor1);
-	RadioButtonStyle& fillColor2(ofColor _fillColor2);
+	RadioButtonStyle edgeSize(int _edgeSize);
+	RadioButtonStyle selected(bool _selected);
+	RadioButtonStyle checkColor(ofColor _checkColor);
+	RadioButtonStyle borderColor(ofColor _borderColor);
+	RadioButtonStyle fillColor0(ofColor _fillColor0);
+	RadioButtonStyle fillColor1(ofColor _fillColor1);
+	RadioButtonStyle fillColor2(ofColor _fillColor2);
 
 	int _edgeSize;
 	bool _selected;
