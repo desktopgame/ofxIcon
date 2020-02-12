@@ -1,5 +1,6 @@
 #include "ofxIcon.h"
 #include <iostream>
+#include <algorithm>
 
 namespace ofxIcon {
 namespace util {
@@ -335,6 +336,101 @@ void writeCheckBoxImage(ofPixels & pixels, CheckBoxStyle style) {
 		util::drawLine(pixels, style._lineColor, p0 + glm::ivec2(1,0), p1 + glm::ivec2(1, 0));
 		util::drawLine(pixels, style._lineColor, p1, p2);
 		util::drawLine(pixels, style._lineColor, p1 + glm::ivec2(1, 0), p2 + glm::ivec2(1, 0));
+	}
+}
+//
+// RadioButton
+//
+RadioButtonStyle::RadioButtonStyle()
+ :  _edgeSize(2),
+    _selected(false),
+    _checkColor(ofColor::black),
+    _borderColor(ofColor::black),
+    _fillColor0(ofColor::cyan),
+    _fillColor1(ofColor::white),
+    _fillColor2(ofColor::cyan) {
+}
+RadioButtonStyle & RadioButtonStyle::edgeSize(int _edgeSize) {
+	this->_edgeSize = _edgeSize;
+	return *this;
+}
+RadioButtonStyle & RadioButtonStyle::selected(bool _selected) {
+	this->_selected = _selected;
+	return *this;
+}
+RadioButtonStyle & RadioButtonStyle::checkColor(ofColor _checkColor) {
+	this->_checkColor = _checkColor;
+	return *this;
+}
+RadioButtonStyle & RadioButtonStyle::borderColor(ofColor _borderColor) {
+	this->_borderColor = _borderColor;
+	return *this;
+}
+RadioButtonStyle & RadioButtonStyle::fillColor0(ofColor _fillColor0) {
+	this->_fillColor0 = _fillColor0;
+	return *this;
+}
+RadioButtonStyle & RadioButtonStyle::fillColor1(ofColor _fillColor1) {
+	this->_fillColor1 = _fillColor1;
+	return *this;
+}
+RadioButtonStyle & RadioButtonStyle::fillColor2(ofColor _fillColor2) {
+	this->_fillColor2 = _fillColor2;
+	return *this;
+}
+void writeRadioButtonImage(ofPixels & pixels, RadioButtonStyle style) {
+	int radiusX = pixels.getWidth() / 2;
+	int radiusY = pixels.getHeight() / 2;
+	int centerX = radiusX;
+	int centerY = radiusY;
+	int baseline = static_cast<int>(static_cast<float>(pixels.getHeight()) * 0.4f);
+	for (int i = 0; i < 360; i++) {
+		float f = static_cast<float>(i);
+		f = f * (3.14f / 180.0f);
+		for (int e = 0; e < style._edgeSize; e++) {
+			float fx = (std::cos(f) * static_cast<float>(radiusX - e)) + centerX;
+			float fy = (std::sin(f) * static_cast<float>(radiusY - e)) + centerY;
+			int ix = static_cast<int>(fx);
+			int iy = static_cast<int>(fy);
+			pixels.setColor(ix, iy, style._borderColor);
+		}
+		float innerfx = std::cos(f) * static_cast<float>(radiusX - style._edgeSize);
+		float innerfy = std::sin(f) * static_cast<float>(radiusY - style._edgeSize)+ centerY;
+		int innerix = static_cast<int>(innerfx);
+		int inneriy = static_cast<int>(innerfy);
+		int startX = std::max(0, centerX - innerix);
+		int endX = std::min(centerX + innerix, static_cast<int>(pixels.getWidth())-1);
+		for (int x = startX; x < endX; x++) {
+			pixels.setColor(x, inneriy, ofColor::white);
+			int y = inneriy;
+			ofColor fillColor0 = style._fillColor0;
+			ofColor fillColor1 = style._fillColor1;
+			ofColor fillColor2 = style._fillColor2;
+			if (y < baseline) {
+				float f = static_cast<float>(y) / static_cast<float>(baseline);
+				pixels.setColor(x, y, fillColor0.lerp(fillColor1, f));
+			} else if (y >= baseline) {
+				int start = y - baseline;
+				int end = pixels.getHeight() - baseline;
+				float f = static_cast<float>(start) / static_cast<float>(end);
+				pixels.setColor(x, y, fillColor1.lerp(fillColor2, f));
+			}
+		}
+	}
+	if (!style._selected) {
+		return;
+	}
+	int circleSize = ((pixels.getWidth() + pixels.getHeight()) / 2) / 3;
+	for (int i = 0; i < 360; i++) {
+		float f = static_cast<float>(i);
+		f = f * (3.14f / 180.0f);
+		for (int e = 0; e <circleSize; e++) {
+			float fx = (std::cos(f) * static_cast<float>(e)) + centerX;
+			float fy = (std::sin(f) * static_cast<float>(e)) + centerY;
+			int ix = static_cast<int>(fx);
+			int iy = static_cast<int>(fy);
+			pixels.setColor(ix, iy, style._checkColor);
+		}
 	}
 }
 }

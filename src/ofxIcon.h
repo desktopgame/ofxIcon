@@ -134,5 +134,34 @@ struct CheckBoxStyle {
  * @return
  */
 void writeCheckBoxImage(ofPixels& pixels, CheckBoxStyle style);
+
+/**
+ * RadioButtonStyle.
+ */
+struct RadioButtonStyle {
+	explicit RadioButtonStyle();
+
+	RadioButtonStyle& edgeSize(int _edgeSize);
+	RadioButtonStyle& selected(bool _selected);
+	RadioButtonStyle& checkColor(ofColor _checkColor);
+	RadioButtonStyle& borderColor(ofColor _borderColor);
+	RadioButtonStyle& fillColor0(ofColor _fillColor0);
+	RadioButtonStyle& fillColor1(ofColor _fillColor1);
+	RadioButtonStyle& fillColor2(ofColor _fillColor2);
+
+	int _edgeSize;
+	bool _selected;
+	ofColor _checkColor;
+	ofColor _borderColor;
+	ofColor _fillColor0;
+	ofColor _fillColor1;
+	ofColor _fillColor2;
+};
+/**
+ * @param pixels
+ * @param style
+ * @return
+ */
+void writeRadioButtonImage(ofPixels& pixels, RadioButtonStyle style);
 }
 #endif
