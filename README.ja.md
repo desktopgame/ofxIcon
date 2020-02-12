@@ -78,4 +78,11 @@ Version history
 ### Version 0.1 (2020/02/12):
 最初のリリースです。
 
+### Version 0.2 (2020/02/12):
+*  以下のメンバーを追加しました:
+  * DropdownStyle#_minSlotWidth
+  * DropdonwStyle#_maxSlotWidth
+  * DropdownStyle#minSlotWidth(int _minSlotWidth);
+  * DropdownStyle#maxSlotWidth(int _maxSlotWidth);
+  * DropdownStyle#computeSlotWidth(int width) const;
 

@@ -78,4 +78,11 @@ Version history
 ### Version 0.1 (2020/02/12):
 first release
 
+### Version 0.2 (2020/02/12):
+* added a bellow members:
+  * DropdownStyle#_minSlotWidth
+  * DropdonwStyle#_maxSlotWidth
+  * DropdownStyle#minSlotWidth(int _minSlotWidth);
+  * DropdownStyle#maxSlotWidth(int _maxSlotWidth);
+  * DropdownStyle#computeSlotWidth(int width) const;
 
