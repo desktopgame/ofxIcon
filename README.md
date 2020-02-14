@@ -46,6 +46,21 @@ void ofApp::setup(){
 	ofxIcon::writeRadioButtonImage(pix7, ofxIcon::RadioButtonStyle().selected(true));
 	radioButtonImage2.setFromPixels(pix7);
 
+	ofPixels pix8;
+	pix8.allocate(300, 15, ofImageType::OF_IMAGE_COLOR_ALPHA);
+	ofxIcon::writeSliderImage(pix8, ofxIcon::SliderStyle());
+	sliderImage.setFromPixels(pix8);
+
+	ofPixels pix9;
+	pix9.allocate(300, 15, ofImageType::OF_IMAGE_COLOR_ALPHA);
+	ofxIcon::writeSliderImage(pix9, ofxIcon::SliderStyle().fillColor0(ofColor::gray).fillColor1(ofColor::white).fillColor2(ofColor::gray));
+	sliderImage2.setFromPixels(pix9);
+
+	ofPixels pix10;
+	pix10.allocate(30, 30, ofImageType::OF_IMAGE_COLOR_ALPHA);
+	ofxIcon::writeSliderKnobImage(pix10, ofxIcon::SliderKnobStyle());
+	sliderKnobImage.setFromPixels(pix10);
+
 	ofSetBackgroundColor(ofColor::gray);
 }
 ````
