@@ -13,6 +13,14 @@ void fillColor(ofPixels& pixels, ofColor color);
 
 /**
  * @param pixels
+ * @param fillColor0
+ * @param fillColor1
+ * @param fillColor2
+ */
+void fillGrad(ofPixels& pixels, ofColor fillColor0, ofColor fillColor1, ofColor fillColor2);
+
+/**
+ * @param pixels
  * @param color
  * @param edgeSize
  */
