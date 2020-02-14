@@ -492,7 +492,7 @@ void writeRadioButtonImage(ofPixels & pixels, RadioButtonStyle style) {
 	}
 }
 //
-// SliderStyle
+// Slider
 //
 SliderStyle::SliderStyle()
  : _edgeSize(2),
@@ -529,5 +529,77 @@ SliderStyle SliderStyle::fillColor2(ofColor _fillColor2) {
 void writeSliderImage(ofPixels & pixels, SliderStyle style) {
 	util::fillGrad(pixels, style._fillColor0, style._fillColor1, style._fillColor2);
 	util::drawBorder(pixels, style._borderColor, style._edgeSize);
+}
+//
+// SliderKnob
+//
+SliderKnobStyle::SliderKnobStyle()
+	: _edgeSize(2),
+	_borderColor(ofColor::black),
+	_fillColor0(ofColor::cyan),
+	_fillColor1(ofColor::white),
+	_fillColor2(ofColor::cyan) {
+}
+SliderKnobStyle SliderKnobStyle::edgeSize(int _edgeSize) {
+	auto c = *this;
+	c._edgeSize = _edgeSize;
+	return c;
+}
+SliderKnobStyle SliderKnobStyle::borderColor(ofColor _borderColor) {
+	auto c = *this;
+	c._borderColor = _borderColor;
+	return c;
+}
+SliderKnobStyle SliderKnobStyle::fillColor0(ofColor _fillColor0) {
+	auto c = *this;
+	c._fillColor0 = _fillColor0;
+	return c;
+}
+SliderKnobStyle SliderKnobStyle::fillColor1(ofColor _fillColor1) {
+	auto c = *this;
+	c._fillColor1 = _fillColor1;
+	return c;
+}
+SliderKnobStyle SliderKnobStyle::fillColor2(ofColor _fillColor2) {
+	auto c = *this;
+	c._fillColor2 = _fillColor2;
+	return c;
+}
+void writeSliderKnobImage(ofPixels & pixels, SliderKnobStyle style) {
+	util::fillColor(pixels, ofColor(0, 0, 0, 0));
+	int hw = pixels.getWidth() / 2;
+	int hh = pixels.getHeight() / 2;
+	for (int i = 0; i < style._edgeSize; i++) {
+		util::drawLine(pixels,
+			style._borderColor,
+			glm::ivec2(0, i),
+			glm::ivec2(pixels.getWidth(), i)
+		);
+		util::drawLine(pixels,
+			style._borderColor,
+			glm::ivec2(i, 0),
+			glm::ivec2(i, hh)
+		);
+		util::drawLine(pixels,
+			style._borderColor,
+			glm::ivec2(pixels.getWidth()-(i+1), 0),
+			glm::ivec2(pixels.getWidth()-(i+1), hh)
+		);
+		util::drawLine(pixels,
+			style._borderColor,
+			glm::ivec2(i, hh),
+			glm::ivec2(hw- (style._edgeSize - i), pixels.getHeight())
+		);
+		util::drawLine(pixels,
+			style._borderColor,
+			glm::ivec2(pixels.getWidth() - (i + 1), hh),
+			glm::ivec2(hw+(style._edgeSize-i), pixels.getHeight())
+		);
+		util::drawLine(pixels,
+			style._borderColor,
+			glm::ivec2(hw - (style._edgeSize), pixels.getHeight() - (i+1)),
+			glm::ivec2(hw + (style._edgeSize), pixels.getHeight() - (i+1))
+		);
+	}
 }
 }

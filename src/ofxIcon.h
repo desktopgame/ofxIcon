@@ -200,5 +200,29 @@ struct SliderStyle {
  * @param style
  */
 void writeSliderImage(ofPixels& pixels, SliderStyle style);
+
+/**
+ * SliderKnobStyle.
+ */
+struct SliderKnobStyle {
+	explicit SliderKnobStyle();
+
+	SliderKnobStyle edgeSize(int _edgeSize);
+	SliderKnobStyle borderColor(ofColor _borderColor);
+	SliderKnobStyle fillColor0(ofColor _fillColor0);
+	SliderKnobStyle fillColor1(ofColor _fillColor1);
+	SliderKnobStyle fillColor2(ofColor _fillColor2);
+
+	int _edgeSize;
+	ofColor _borderColor;
+	ofColor _fillColor0;
+	ofColor _fillColor1;
+	ofColor _fillColor2;
+};
+/**
+ * @param pixels
+ * @param style
+ */
+void writeSliderKnobImage(ofPixels& pixels, SliderKnobStyle style);
 }
 #endif
