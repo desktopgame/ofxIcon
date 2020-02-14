@@ -56,6 +56,13 @@ void drawBorder(ofPixels & pixels, ofColor color, int edgeSize) {
 	}
 }
 void drawLine(ofPixels & pixels, ofColor color, glm::ivec2 start, glm::ivec2 end) {
+	auto points = linePoints(start, end);
+	for (auto& point : points) {
+		pixels.setColor(point.x, point.y, color);
+	}
+}
+std::vector<glm::ivec2> linePoints(glm::ivec2 start, glm::ivec2 end) {
+	std::vector<glm::ivec2> v;
 	int dx = std::abs(end.x - start.x);
 	int dy = std::abs(end.y - start.y);
 	int sx, sy = 0;
@@ -70,7 +77,7 @@ void drawLine(ofPixels & pixels, ofColor color, glm::ivec2 start, glm::ivec2 end
 	int err = dx - dy;
 	int e2 = 0;
 	while (true) {
-		pixels.setColor(start.x, start.y, color);
+		v.emplace_back(start);
 		if (start.x == end.x && start.y == end.y) {
 			break;
 		}
@@ -84,6 +91,7 @@ void drawLine(ofPixels & pixels, ofColor color, glm::ivec2 start, glm::ivec2 end
 			start.y = start.y + sy;
 		}
 	}
+	return v;
 }
 }
 //
