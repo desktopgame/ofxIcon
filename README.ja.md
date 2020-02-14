@@ -86,3 +86,5 @@ Version history
   * DropdownStyle#maxSlotWidth(int _maxSlotWidth);
   * DropdownStyle#computeSlotWidth(int width) const;
 
+### Version 0.2 (2020/02/14):
+* スライダーを生成する関数を追加しました。
