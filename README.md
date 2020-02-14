@@ -101,5 +101,5 @@ first release
   * DropdownStyle#maxSlotWidth(int _maxSlotWidth);
   * DropdownStyle#computeSlotWidth(int width) const;
 
-### Version 0.2 (2020/02/14):
+### Version 0.3 (2020/02/14):
 * added a slider generate function
