@@ -609,5 +609,49 @@ void writeSliderKnobImage(ofPixels & pixels, SliderKnobStyle style) {
 			glm::ivec2(hw + (style._edgeSize), pixels.getHeight() - (i+1))
 		);
 	}
+	int baseline = static_cast<int>(static_cast<float>(pixels.getHeight()) * 0.4f);
+	for (int y = 0; y < pixels.getHeight(); y++) {
+		if (y < style._edgeSize) {
+			continue;
+		}
+		int startX = 0; bool findStartX = false;
+		int endX = 0;   bool findEndX = false;
+		// ŠJŽn, I—¹‚ðŽæ“¾‚·‚é
+		for (int x = 0; x < pixels.getWidth(); x++) {
+			ofColor c = pixels.getColor(x, y);
+			if (!findStartX && c == style._borderColor) {
+				findStartX = true;
+			}
+			if (findStartX && c != style._borderColor) {
+				startX = x;
+				break;
+			}
+		}
+		for (int x = pixels.getWidth()-1; x >=0; x--) {
+			ofColor c = pixels.getColor(x, y);
+			if (!findEndX && c == style._borderColor) {
+				findEndX = true;
+			}
+			if (findEndX && c != style._borderColor) {
+				endX = x;
+				break;
+			}
+		}
+		for (int x = startX; x <= endX; x++) {
+			ofColor fc0 = style._fillColor0;
+			ofColor fc1 = style._fillColor1;
+			ofColor fc2 = style._fillColor2;
+			if (y < baseline) {
+				float f = static_cast<float>(y) / static_cast<float>(baseline);
+				pixels.setColor(x, y, fc0.lerp(fc1, f));
+			}
+			else if (y >= baseline) {
+				int start = y - baseline;
+				int end = pixels.getHeight() - baseline;
+				float f = static_cast<float>(start) / static_cast<float>(end);
+				pixels.setColor(x, y, fc1.lerp(fc2, f));
+			}
+		}
+	}
 }
 }
