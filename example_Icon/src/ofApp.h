@@ -29,5 +29,8 @@ class ofApp : public ofBaseApp{
 		ofImage checkboxImage2;
 		ofImage radioButtonImage;
 		ofImage radioButtonImage2;
+		ofImage sliderImage;
+		ofImage sliderImage2;
+		ofImage sliderKnobImage;
 		
 };
