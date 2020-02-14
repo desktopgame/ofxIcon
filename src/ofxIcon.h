@@ -168,5 +168,29 @@ struct RadioButtonStyle {
  * @return
  */
 void writeRadioButtonImage(ofPixels& pixels, RadioButtonStyle style);
+
+/**
+ * SliderStyle.
+ */
+struct SliderStyle {
+	explicit SliderStyle();
+
+	SliderStyle edgeSize(int _edgeSize);
+	SliderStyle borderColor(ofColor _borderColor);
+	SliderStyle fillColor0(ofColor _fillColor0);
+	SliderStyle fillColor1(ofColor _fillColor1);
+	SliderStyle fillColor2(ofColor _fillColor2);
+
+	int _edgeSize;
+	ofColor _borderColor;
+	ofColor _fillColor0;
+	ofColor _fillColor1;
+	ofColor _fillColor2;
+};
+/**
+ * @param pixels
+ * @param style
+ */
+void writeSliderImage(ofPixels& pixels, SliderStyle style);
 }
 #endif

@@ -485,4 +485,60 @@ void writeRadioButtonImage(ofPixels & pixels, RadioButtonStyle style) {
 		}
 	}
 }
+//
+// SliderStyle
+//
+SliderStyle::SliderStyle()
+ : _edgeSize(2),
+   _borderColor(ofColor::black),
+   _fillColor0(ofColor::cyan),
+   _fillColor1(ofColor::white),
+   _fillColor2(ofColor::cyan) {
+}
+SliderStyle SliderStyle::edgeSize(int _edgeSize) {
+	auto c = *this;
+	c._edgeSize = _edgeSize;
+	return c;
+}
+SliderStyle SliderStyle::borderColor(ofColor _borderColor) {
+	auto c = *this;
+	c._borderColor = _borderColor;
+	return c;
+}
+SliderStyle SliderStyle::fillColor0(ofColor _fillColor0) {
+	auto c = *this;
+	c._fillColor0 = _fillColor0;
+	return c;
+}
+SliderStyle SliderStyle::fillColor1(ofColor _fillColor1) {
+	auto c = *this;
+	c._fillColor1 = _fillColor1;
+	return c;
+}
+SliderStyle SliderStyle::fillColor2(ofColor _fillColor2) {
+	auto c = *this;
+	c._fillColor2 = _fillColor2;
+	return c;
+}
+void writeSliderImage(ofPixels & pixels, SliderStyle style) {
+	int baseline = static_cast<int>(static_cast<float>(pixels.getHeight()) * 0.4f);
+	for (int x = 0; x < pixels.getWidth(); x++) {
+		for (int y = 0; y < pixels.getHeight(); y++) {
+			ofColor fillColor0 = style._fillColor0;
+			ofColor fillColor1 = style._fillColor1;
+			ofColor fillColor2 = style._fillColor2;
+			if (y < baseline) {
+				float f = static_cast<float>(y) / static_cast<float>(baseline);
+				pixels.setColor(x, y, fillColor0.lerp(fillColor1, f));
+			}
+			else if (y >= baseline) {
+				int start = y - baseline;
+				int end = pixels.getHeight() - baseline;
+				float f = static_cast<float>(start) / static_cast<float>(end);
+				pixels.setColor(x, y, fillColor1.lerp(fillColor2, f));
+			}
+		}
+	}
+	util::drawBorder(pixels, style._borderColor, style._edgeSize);
+}
 }
